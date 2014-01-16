@@ -8,6 +8,7 @@ class Dcl < Formula
   homepage "http://www.gfd-dennou.org/library/dcl/"
   url "http://www.gfd-dennou.org/library/dcl/dcl-5.4.8.tar.gz"
   sha1 "58aa1bd1226dbbb49e4d725cccdcac211cde94eb"
+  version '5.4.8'
 
   depends_on :x11
   depends_on :fortran
