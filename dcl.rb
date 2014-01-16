@@ -10,7 +10,7 @@ class Dcl < Formula
   sha1 "58aa1bd1226dbbb49e4d725cccdcac211cde94eb"
 
   depends_on :x11
-  depends_on :gfortran
+  depends_on :fortran
 
   def install
     ENV.deparallelize
