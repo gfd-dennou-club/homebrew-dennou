@@ -16,9 +16,10 @@ class Dcl < Formula
 
   def install
     ENV.deparallelize
+    ENV["PKG_CONFIG_PATH"] = "#{ENV["PKG_CONFIG_PATH"]}:/opt/X11/lib/pkgconfig/:"
+                             "/usr/lib/pkgconfig:/usr/X11/lib/pkgconfig/"
 
-    system "./configure", "--enable-shared",
-                          "--prefix=#{prefix}"
+    system "./configure", "--prefix=#{prefix}"
     system "make"
     system "make install"
   end
