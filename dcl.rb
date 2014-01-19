@@ -10,15 +10,15 @@ class Dcl < Formula
   sha1 "58aa1bd1226dbbb49e4d725cccdcac211cde94eb"
   version '5.4.8'
 
+  depends_on 'pkg-config' => :build
   depends_on :x11
-  depends_on 'gtk'
+  depends_on 'glib'
+  depends_on 'gtk+'
+  depends_on 'atk'
   depends_on :fortran
 
   def install
     ENV.deparallelize
-    ENV["PKG_CONFIG_PATH"] = "#{ENV["PKG_CONFIG_PATH"]}:/opt/X11/lib/pkgconfig/:"
-                             "/usr/lib/pkgconfig:/usr/X11/lib/pkgconfig/"
-
     system "./configure", "--prefix=#{prefix}"
     system "make"
     system "make install"
