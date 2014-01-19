@@ -19,6 +19,8 @@ class Dcl < Formula
 
   def install
     ENV.deparallelize
+    ENV.x11
+
     system "./configure", "--prefix=#{prefix}"
     system "make"
     system "make install"
