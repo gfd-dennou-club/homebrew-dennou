@@ -11,7 +11,7 @@ class DclC < Formula
   version "5.4.8"
 
   depends_on :x11
-  depends_on :gtk2
+  depends_on :gtk
 
   def install
     # ENV.deparallelize  # if your formula fails when building in parallel
