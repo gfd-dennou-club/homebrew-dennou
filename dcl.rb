@@ -11,7 +11,7 @@ class Dcl < Formula
   version '5.4.8'
 
   depends_on 'pkg-config' => :build
-  depends_on :x11 => :build
+  depends_on :x11
   depends_on 'glib'
   depends_on 'gtk+'
   depends_on 'atk'
@@ -19,9 +19,9 @@ class Dcl < Formula
 
   def install
     ENV.deparallelize
-    ENV.x11
-
-    system "./configure", "--prefix=#{prefix}"
+    system "./configure", "--prefix=#{prefix}",
+                          "--x-includes=/opt/X11/include",
+                          "--x-libraries=/opt/X11/lib"
     system "make"
     system "make install"
   end
