@@ -6,9 +6,9 @@ require "formula"
 
 class Dcl < Formula
   homepage "http://www.gfd-dennou.org/library/dcl/"
-  url "http://www.gfd-dennou.org/library/dcl/dcl-5.4.8.tar.gz"
-  sha1 "58aa1bd1226dbbb49e4d725cccdcac211cde94eb"
-  version '5.4.8'
+  url "http://www.gfd-dennou.org/library/dcl/dcl5.9beta-9.tar.gz"
+  sha1 "b3e3a06fc699150945087b565d470c6544fa25c3"
+  version '5.9'
 
   depends_on 'pkg-config' => :build
   depends_on :x11

@@ -4,11 +4,11 @@ require "formula"
 #                /usr/local/Library/Contributions/example-formula.rb
 # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
 
-class Dcl-c < Formula
+class Dclc < Formula
   homepage ""
-  url "http://www.gfd-dennou.org/arch/dcl/dcl-5.4.8-C.tar.gz"
-  sha1 "58aa1bd1226dbbb49e4d725cccdcac211cde94eb"
-  version '5.4.8'
+  url "http://www.gfd-dennou.org/arch/dcl/dcl-5.9.0-C.tar.gz"
+  sha1 "75c2359d7aaa472365af46401abd031445646ffe"
+  version '5.9.0'
 
 
   depends_on 'pkg-config' => :build
@@ -23,8 +23,7 @@ class Dcl-c < Formula
     # Remove unrecognized options if warned by configure
     system "./configure", "--prefix=#{prefix}",
                           "--x-includes=/opt/X11/include",
-                          "--x-libraries=/opt/X11/lib",
-                          "--enable-shared"
+                          "--x-libraries=/opt/X11/lib"
     system "make"
     system "make install"
   end
