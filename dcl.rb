@@ -1,21 +1,19 @@
 require "formula"
 
-# Documentation: https://github.com/Homebrew/homebrew/wiki/Formula-Cookbook
-#                /usr/local/Library/Contributions/example-formula.rb
-# PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
-
 class Dcl < Formula
   homepage "http://www.gfd-dennou.org/library/dcl/"
-  url "http://www.gfd-dennou.org/library/dcl/dcl5.9beta-9.tar.gz"
-  sha1 "b3e3a06fc699150945087b565d470c6544fa25c3"
-  version '5.9'
+  url "http://www.gfd-dennou.org/library/dcl/dcl-6.0.2.tar.gz"
+  sha1 "2e7e27da33cbe2d6bcb76ec5550f4c6dc20a1c95"
+  version '6.0.2'
 
-  depends_on 'pkg-config' => :build
+  # gfortran, enable OpenMP
+  depends_on :fortran => "without-multilib"
+  # for gtk support
   depends_on :x11
+  depends_on 'pkg-config'
   depends_on 'glib'
   depends_on 'gtk+'
   depends_on 'atk'
-  depends_on :fortran
 
   def install
     ENV.deparallelize
