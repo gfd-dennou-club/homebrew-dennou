@@ -6,7 +6,7 @@ class Dcl < Formula
   sha256 "57d8924d0c1245af239dee6abc1bbf82926dd86f1dd7ac3911b216cfc6a30e13"
 
   depends_on :fortran
-  depends_on :'gtk+'
+  depends_on 'gtk+'
 
   def install
     ENV.deparallelize
