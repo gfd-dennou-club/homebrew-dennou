@@ -12,7 +12,7 @@ class Dcl < Formula
     ENV.deparallelize
     system "./configure", "--prefix=#{prefix}"
     system "make"
-    system "install"
+    system "make install"
   end
 
   test do
