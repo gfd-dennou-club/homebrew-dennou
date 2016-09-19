@@ -1,26 +1,20 @@
-require "formula"
-
-class Dclc < Formula
+class DclC < Formula
+  desc ""
   homepage ""
-  url "https://www.gfd-dennou.org/library/dcl/dcl-6.0.2-C.tar.gz"
-  sha1 "d4446ca51cd08eb19fcbfeb083dc7deae41b5ec4"
-  version '6.0.2'
+  url "https://www.gfd-dennou.org/library/dcl/dcl-7.1.1-C.tar.gz"
+  version "7.1.1"
+  sha256 "57d8924d0c1245af239dee6abc1bbf82926dd86f1dd7ac3911b216cfc6a30e13"
 
-  depends_on 'pkg-config' => :build
-  depends_on :x11
-  depends_on 'glib'
-  depends_on 'gtk+'
-  depends_on 'atk'
+  depends_on :'gtk+'
 
   def install
-    system "./configure", "--prefix=#{prefix}",
-                          "--x-includes=/opt/X11/include",
-                          "--x-libraries=/opt/X11/lib"
+    ENV.deparallelize
+    system "./configure", "--prefix=#{prefix}"
     system "make"
-    system "make install"
+    system "install"
   end
 
   test do
-    system "false"
+    system "true"
   end
 end
