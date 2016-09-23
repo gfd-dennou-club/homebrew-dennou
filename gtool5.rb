@@ -9,13 +9,16 @@ class Gtool5 < Formula
   depends_on 'netcdf' => 'with-fortran'
 
   def install
+    brew_prefix = `brew --prefix`.chomp!
     ENV.deparallelize
     if ENV['SYSFFLAGS'].nil?
-      ENV.append 'FCFLAGS', '-I/usr/local/include'
-      ENV['SYSFFLAGS'] = ENV['FCFLAGS']
+      ENV.append 'SYSFFLAGS', "-I#{brew_prefix}/include"
+    else
+      ENV['SYSFFLAGS'] = "-I#{brew_prefix}/include"
     end
-    system "./configure", "--with-netcdff=/usr/local/lib/libnetcdff.a",
-                          "--with-netcdf=/usr/local/lib/libnetcdf.a",
+    system "./configure", "--with-netcdf-include=#{brew_prefix}/include/netcdf.inc",
+                          "--with-netcdff=#{brew_prefix}/lib/libnetcdff.a",
+                          "--with-netcdf=#{brew_prefix}/lib/libnetcdf.a",
                           "--prefix=#{prefix}"
     system "make"
     system "make test"
@@ -24,7 +27,6 @@ class Gtool5 < Formula
 
   def caveats; <<-EOS.undent
     This gtool5 library build with following FLAGS:
-      CFLAGS:  #{ENV['CFLAGS']}
       FFLAGS:  #{ENV['SYSFFLAGS']}
 
     If you want set Compiler FLAGS such as '-O2', please set 'SYSFFLAGS', 
