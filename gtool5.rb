@@ -5,17 +5,18 @@ class Gtool5 < Formula
   version "20160613"
   sha256 "10824135382ab4efb7b92cb3206243956a1aaa8bd5e94443c84fd46a453302f8"
 
-  depends_on :fortran
+  depends_on 'gcc'
   depends_on 'netcdf' => 'with-fortran'
 
   def install
-    brew_prefix = `brew --prefix`.chomp!
+    brew_prefix = `/usr/local/bin/brew --prefix`.chomp!
     ENV.deparallelize
     if ENV['SYSFFLAGS'].nil?
       ENV.append 'SYSFFLAGS', "-I#{brew_prefix}/include"
     else
       ENV['SYSFFLAGS'] = "-I#{brew_prefix}/include"
     end
+    ENV.append 'FC', "gfortran"
     system "./configure", "--with-netcdf-include=#{brew_prefix}/include/netcdf.inc",
                           "--with-netcdff=#{brew_prefix}/lib/libnetcdff.a",
                           "--with-netcdf=#{brew_prefix}/lib/libnetcdf.a",
@@ -25,7 +26,7 @@ class Gtool5 < Formula
     system "make install"
   end
 
-  def caveats; <<-EOS.undent
+  def caveats; <<~EOS
     This gtool5 library build with following FLAGS:
       FFLAGS:  #{ENV['SYSFFLAGS']}
 
